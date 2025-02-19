@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "grpc-chat/chat";
+
+message JoinChatRequest {
+    string client_name = 1;
+}
+
+message ChatMessage {
+    string sender = 1;
+    string message = 2;
+}
+
+service ChatService {
+    rpc JoinChat(JoinChatRequest) returns (stream ChatMessage);
+}
